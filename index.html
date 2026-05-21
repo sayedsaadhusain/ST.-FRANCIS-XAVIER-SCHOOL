@@ -1582,15 +1582,18 @@
   lucide.createIcons();
 
   // ── LOADER SCRIPT ──
-  window.addEventListener('load', () => {
+  function hideLoader() {
     const loader = document.getElementById('loader');
-    loader.classList.add('out');
-    // Initialize observer animations
-    initScrollReveals();
-    initCounters();
-    // Testimonial init
-    showSlide(0);
-  });
+    if (!loader.classList.contains('out')) {
+      loader.classList.add('out');
+      initScrollReveals();
+      initCounters();
+      showSlide(0);
+    }
+  }
+  window.addEventListener('load', hideLoader);
+  document.addEventListener('DOMContentLoaded', hideLoader);
+  setTimeout(hideLoader, 800); // 800ms maximum loader duration
 
   // ── SCROLL PROGRESS & SOLID NAVBAR ──
   window.addEventListener('scroll', () => {
