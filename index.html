@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St. Francis Xavier School | ICSE | Excellence in Education | Lucknow</title>
+  <meta name="description" content="St. Francis Xavier School – Premier ICSE co-educational institution in Lucknow. Established 2002. English medium, holistic education, world-class facilities.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    :root {
+      --crimson: #B5121B;
+      --crimson-dark: #8a0d14;
+      --crimson-light: rgba(181,18,27,0.08);
+      --gold: #D8A73B;
+      --gold-light: rgba(216,167,59,0.15);
+      --white: #FFFFFF;
+      --bg: #F7F8FA;
+      --heading: #1E1E1E;
+      --body: #5E6472;
+      --border: rgba(0,0,0,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--body); overflow-x: hidden; line-height: 1.6; }
+
+    /* ── SCROLL PROGRESS ── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--crimson), var(--gold), var(--crimson));
+      background-size: 200% 100%; z-index: 9999;
+      transition: width 0.08s linear;
+      animation: shimmer 2s linear infinite;
+    }
+    @keyframes shimmer { 0%{background-position:0 0} 100%{background-position:200% 0} }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed; inset: 0; z-index: 99999;
+      background: var(--crimson);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+    #loader.out { opacity: 0; visibility: hidden; }
+    .loader-emblem {
+      width: 90px; height: 90px; border-radius: 24px;
+      background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; color: #fff; font-size: 2rem; font-weight: 900;
+      margin-bottom: 20px; backdrop-filter: blur(10px);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
+    .loader-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; }
+    .loader-sub { font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 4px; text-transform: uppercase; margin-top: 6px; }
+    .loader-track { width: 220px; height: 3px; background: rgba(255,255,255,0.15); border-radius: 2px; margin-top: 36px; overflow: hidden; }
+    .loader-fill { height: 100%; background: var(--gold); border-radius: 2px; animation: fill 2s ease-out forwards; }
+    @keyframes fill { from{width:0} to{width:100%} }
+
+    /* ── NAVBAR ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 0 5%; transition: background 0.4s, box-shadow 0.4s, padding 0.3s;
+    }
+    #nav.solid {
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(24px);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-box {
+      width: 50px; height: 50px; background: var(--crimson); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; color: #fff; font-size: 1.3rem; font-weight: 900;
+      box-shadow: 0 4px 18px rgba(181,18,27,0.35); flex-shrink: 0;
+    }
+    .logo-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 800; color: #fff; line-height: 1.2; }
+    #nav.solid .logo-title { color: var(--heading); }
+    .logo-caption { font-size: 0.68rem; color: rgba(255,255,255,0.6); letter-spacing: 2px; text-transform: uppercase; }
+    #nav.solid .logo-caption { color: var(--body); }
+
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a {
+      display: block; padding: 8px 13px; border-radius: 8px;
+      font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.9);
+      text-decoration: none; transition: all 0.25s;
+    }
+    #nav.solid .nav-links a { color: var(--heading); }
+    .nav-links a:hover { background: var(--crimson-light); color: var(--crimson) !important; }
+    .nav-cta {
+      background: var(--crimson) !important; color: #fff !important;
+      padding: 10px 22px !important; border-radius: 50px !important; font-weight: 600 !important;
+      box-shadow: 0 4px 18px rgba(181,18,27,0.32);
+    }
+    .nav-cta:hover { background: var(--crimson-dark) !important; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(181,18,27,0.42) !important; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; transition: all 0.3s; border-radius: 2px; }
+    #nav.solid .hamburger span { background: var(--heading); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* mobile drawer */
+    .mobile-drawer {
+      display: none; position: fixed; top: 80px; left: 0; right: 0;
+      background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      padding: 20px; z-index: 999;
+    }
+    .mobile-drawer.open { display: block; }
+    .mobile-drawer ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .mobile-drawer ul a {
+      display: block; padding: 12px 16px; border-radius: 10px;
+      color: var(--heading); text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .mobile-drawer ul a:hover { background: var(--crimson-light); color: var(--crimson); }
+
+    /* ── COMMON SECTION ── */
+    .sec { padding: 100px 5%; }
+    .wrap { max-width: 1380px; margin: 0 auto; }
+    .sec-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--crimson-light); color: var(--crimson);
+      padding: 6px 18px; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      font-weight: 800; color: var(--heading); line-height: 1.15; margin-bottom: 14px;
+    }
+    .sec-title em { font-style: normal; color: var(--crimson); }
+    .sec-body { font-size: 1.02rem; color: var(--body); line-height: 1.85; }
+    .center { text-align: center; }
+    .center .sec-body { max-width: 600px; margin: 0 auto; }
+
+    /* REVEAL */
+    .r { opacity: 0; transform: translateY(36px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .r.vis { opacity: 1; transform: none; }
+    .r-l { opacity: 0; transform: translateX(-36px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .r-l.vis { opacity: 1; transform: none; }
+    .r-r { opacity: 0; transform: translateX(36px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .r-r.vis { opacity: 1; transform: none; }
+
+    /* ─────────── HERO ─────────── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden;
+      background: linear-gradient(to bottom, rgba(12, 1, 3, 0.4) 0%, rgba(12, 1, 3, 0.8) 100%), url('hero_bg_real.jpg') center/cover no-repeat;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero-content {
+      position: relative; z-index: 2; width: 100%; padding: 120px 5% 80px;
+      max-width: 1380px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center;
+    }
+
+    /* hero left */
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(216,167,59,0.14); border: 1px solid rgba(216,167,59,0.38);
+      backdrop-filter: blur(12px); border-radius: 50px; padding: 8px 22px;
+      color: var(--gold); font-size: 0.82rem; font-weight: 600; letter-spacing: 1.2px;
+      margin-bottom: 28px; animation: fadeDown 0.8s ease both;
+    }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 900; color: #fff; line-height: 1.06; margin-bottom: 14px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 0.82rem; color: rgba(255,255,255,0.55); letter-spacing: 3px;
+      text-transform: uppercase; margin-bottom: 22px;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-desc {
+      font-size: 1.08rem; color: rgba(255,255,255,0.78); line-height: 1.85;
+      max-width: 520px; margin-bottom: 42px;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.8s 0.5s ease both; }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--gold); color: #1a1a1a; padding: 16px 34px;
+      border-radius: 50px; font-weight: 700; font-size: 0.96rem; text-decoration: none;
+      box-shadow: 0 8px 32px rgba(216,167,59,0.42); transition: all 0.3s; border: none; cursor: pointer;
+    }
+    .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 16px 44px rgba(216,167,59,0.55); }
+
+    .btn-ghost-w {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.38);
+      color: #fff; padding: 16px 34px; border-radius: 50px;
+      font-weight: 600; font-size: 0.96rem; text-decoration: none; transition: all 0.3s;
+    }
+    .btn-ghost-w:hover { background: rgba(255,255,255,0.18); border-color: #fff; transform: translateY(-3px); }
+
+    /* hero right stats */
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      animation: fadeRight 0.8s 0.4s ease both;
+    }
+    .hstat {
+      background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px); border-radius: 16px; padding: 26px 22px;
+      text-align: center; transition: all 0.35s;
+    }
+    .hstat:hover { background: rgba(0,0,0,0.6); transform: translateY(-4px); border-color: var(--gold); }
+    .hstat-val { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 800; color: var(--gold); }
+    .hstat-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.62); margin-top: 5px; letter-spacing: 0.5px; }
+
+    .hero-scroll {
+      position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      animation: bounce 2.4s ease infinite;
+    }
+    .hero-scroll-dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(9px)} }
+
+    @keyframes fadeDown { from{opacity:0;transform:translateY(-18px)} to{opacity:1;transform:none} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
+    @keyframes fadeRight { from{opacity:0;transform:translateX(28px)} to{opacity:1;transform:none} }
+
+    /* ─────────── QUICK INFO ─────────── */
+    #quick { background: #fff; padding: 56px 5%; }
+    .quick-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
+    .qcard {
+      background: #fff; border-radius: 20px; padding: 38px 26px;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.06); border: 1px solid var(--border);
+      text-align: center; transition: all 0.4s; position: relative; overflow: hidden;
+    }
+    .qcard::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+      opacity: 0; transition: opacity 0.4s; z-index: 0;
+    }
+    .qcard:hover::after { opacity: 1; }
+    .qcard:hover { transform: translateY(-8px); box-shadow: 0 22px 60px rgba(181,18,27,0.24); }
+    .qcard > * { position: relative; z-index: 1; }
+    .q-icon {
+      width: 68px; height: 68px; background: var(--crimson-light); border-radius: 18px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+      transition: background 0.4s;
+    }
+    .qcard:hover .q-icon { background: rgba(255,255,255,0.14); }
+    .q-icon i { width: 30px; height: 30px; color: var(--crimson); transition: color 0.4s; }
+    .qcard:hover .q-icon i { color: var(--gold); }
+    .q-lbl { font-size: 0.75rem; color: var(--body); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 7px; transition: color 0.4s; }
+    .qcard:hover .q-lbl { color: rgba(255,255,255,0.65); }
+    .q-val { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--heading); transition: color 0.4s; }
+    .qcard:hover .q-val { color: #fff; }
+
+    /* ─────────── ABOUT ─────────── */
+    #about { background: var(--bg); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img-main {
+      height: 540px; border-radius: 26px; overflow: hidden;
+      background: #0c0103;
+      position: relative;
+    }
+    .about-img-main img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .about-img-main:hover img {
+      transform: scale(1.06);
+    }
+    .about-watermark {
+      position: absolute; font-family: 'Playfair Display', serif;
+      font-size: 9rem; font-weight: 900; color: rgba(255,255,255,0.05);
+      user-select: none;
+    }
+    .about-img-center { text-align: center; position: relative; z-index: 1; }
+    .about-shield {
+      width: 100px; height: 100px; background: rgba(255,255,255,0.1);
+      border: 2.5px solid rgba(255,255,255,0.28); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+      backdrop-filter: blur(8px);
+    }
+    .about-shield i { width: 44px; height: 44px; color: rgba(255,255,255,0.8); }
+    .about-img-label { color: rgba(255,255,255,0.55); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; }
+
+    .about-badge {
+      position: absolute; bottom: -22px; right: -22px;
+      background: var(--gold); color: #fff; border-radius: 18px; padding: 22px 26px;
+      text-align: center; box-shadow: 0 10px 34px rgba(216,167,59,0.44); z-index: 2;
+    }
+    .ab-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; display: block; line-height: 1; }
+    .ab-lbl { font-size: 0.72rem; letter-spacing: 1px; opacity: 0.9; }
+    .about-pill {
+      position: absolute; top: 26px; left: -22px; z-index: 2;
+      background: #fff; border-radius: 14px; padding: 14px 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.11); display: flex; align-items: center; gap: 12px;
+    }
+    .pill-ico { width: 38px; height: 38px; background: var(--crimson-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .pill-ico i { width: 18px; height: 18px; color: var(--crimson); }
+    .pill-t { font-weight: 700; font-size: 0.82rem; color: var(--heading); }
+    .pill-s { font-size: 0.72rem; color: var(--body); }
+
+    .about-text .sec-body { margin-bottom: 22px; }
+    .mvv { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+    .mvv-card {
+      background: #fff; border-radius: 16px; padding: 22px;
+      border-left: 3px solid var(--crimson);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05); transition: all 0.3s;
+    }
+    .mvv-card:hover { transform: translateY(-4px); box-shadow: 0 12px 38px rgba(0,0,0,0.09); }
+    .mvv-t { font-weight: 700; color: var(--heading); margin-bottom: 7px; font-size: 0.92rem; }
+    .mvv-d { font-size: 0.84rem; color: var(--body); line-height: 1.72; }
+
+    /* ─────────── WHY ─────────── */
+    #why { background: #fff; }
+    .why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; margin-top: 60px; }
+    .wcard {
+      background: var(--bg); border-radius: 20px; padding: 34px 26px;
+      text-align: center; transition: all 0.4s; border: 2px solid transparent;
+      position: relative; overflow: hidden;
+    }
+    .wcard::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, var(--crimson), var(--gold));
+      transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+    }
+    .wcard:hover::before { transform: scaleX(1); }
+    .wcard:hover { border-color: rgba(181,18,27,0.12); transform: translateY(-8px); box-shadow: 0 22px 55px rgba(0,0,0,0.09); background: #fff; }
+    .w-ico {
+      width: 68px; height: 68px; background: var(--crimson-light); border-radius: 18px;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
+      transition: background 0.35s;
+    }
+    .wcard:hover .w-ico { background: rgba(181,18,27,0.14); }
+    .w-ico i { width: 28px; height: 28px; color: var(--crimson); }
+    .w-t { font-weight: 700; color: var(--heading); font-size: 0.97rem; margin-bottom: 9px; }
+    .w-d { font-size: 0.85rem; color: var(--body); line-height: 1.72; }
+
+    /* ─────────── ACADEMICS ─────────── */
+    #academics { background: var(--bg); }
+    .academics-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 44px; flex-wrap: wrap; gap: 20px; }
+    .tabs { display: flex; gap: 6px; background: #fff; padding: 6px; border-radius: 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); flex-wrap: wrap; }
+    .tab {
+      padding: 10px 22px; border-radius: 50px; font-size: 0.86rem; font-weight: 600;
+      border: none; cursor: pointer; transition: all 0.3s; background: transparent; color: var(--body);
+      font-family: 'Outfit', sans-serif;
+    }
+    .tab.on { background: var(--crimson); color: #fff; box-shadow: 0 4px 16px rgba(181,18,27,0.3); }
+    .tab-pane { display: none; }
+    .tab-pane.on { display: block; }
+    .ac-panel {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+      background: #fff; border-radius: 26px; padding: 50px;
+      box-shadow: 0 6px 36px rgba(0,0,0,0.06);
+    }
+    .ac-h3 { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 700; color: var(--heading); margin-bottom: 14px; }
+    .ac-p { color: var(--body); line-height: 1.82; margin-bottom: 20px; font-size: 0.97rem; }
+    .ac-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--crimson-light); color: var(--crimson);
+      padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .outcomes h4 { font-weight: 700; color: var(--heading); margin-bottom: 16px; font-size: 0.95rem; }
+    .out-list { list-style: none; }
+    .out-list li {
+      display: flex; align-items: flex-start; gap: 10px; padding: 9px 0;
+      font-size: 0.9rem; color: var(--body);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .out-list li:last-child { border: none; }
+    .out-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+
+    /* ─────────── CAMPUS GALLERY ─────────── */
+    #campus { background: #fff; }
+    .gal-filters { display: flex; gap: 9px; justify-content: center; flex-wrap: wrap; margin: 36px 0; }
+    .gf {
+      padding: 8px 22px; border-radius: 50px; font-size: 0.84rem; font-weight: 500;
+      border: 2px solid rgba(181,18,27,0.18); cursor: pointer; transition: all 0.3s;
+      background: transparent; color: var(--body); font-family: 'Outfit', sans-serif;
+    }
+    .gf.on, .gf:hover { background: var(--crimson); color: #fff; border-color: var(--crimson); }
+    .gal-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px; gap: 18px;
+    }
+    .gal-item { border-radius: 18px; overflow: hidden; position: relative; cursor: pointer; }
+    .gal-item.big { grid-row: span 2; }
+    .gal-bg { width: 100%; height: 100%; background-position: center !important; background-size: cover !important; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    .gal-item:hover .gal-bg { transform: scale(1.07); }
+    .gal-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.4s; display: flex; align-items: flex-end; padding: 22px;
+    }
+    .gal-item:hover .gal-overlay { opacity: 1; }
+    .gal-lbl { color: #fff; font-weight: 600; font-size: 1rem; }
+    .gal-glass {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(255,255,255,0.18); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 8px;
+      padding: 5px 10px; font-size: 0.72rem; color: #fff; font-weight: 600;
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .gal-item:hover .gal-glass { opacity: 1; }
+
+    /* ─────────── ADMISSIONS ─────────── */
+    #admissions { background: var(--bg); }
+    .adm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .tl-step { display: flex; gap: 22px; margin-bottom: 36px; }
+    .tl-num {
+      width: 54px; height: 54px; background: var(--crimson); border-radius: 16px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-family: 'Playfair Display', serif; font-weight: 800; color: #fff; font-size: 1.15rem;
+      box-shadow: 0 8px 24px rgba(181,18,27,0.3);
+    }
+    .tl-body h4 { font-weight: 700; color: var(--heading); margin-bottom: 5px; font-size: 1rem; }
+    .tl-body p { font-size: 0.9rem; color: var(--body); line-height: 1.75; }
+    .tl-line { width: 2px; background: rgba(181,18,27,0.14); height: 26px; margin-left: 26px; margin-top: -16px; margin-bottom: -16px; }
+
+    .form-card { background: #fff; border-radius: 26px; padding: 42px; box-shadow: 0 8px 42px rgba(0,0,0,0.07); }
+    .form-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--heading); margin-bottom: 28px; }
+    .fg { margin-bottom: 18px; }
+    .fg label { display: block; font-size: 0.83rem; font-weight: 600; color: var(--heading); margin-bottom: 7px; }
+    .fg input, .fg select, .fg textarea {
+      width: 100%; padding: 13px 16px; border-radius: 12px;
+      border: 1.5px solid rgba(0,0,0,0.09); background: var(--bg);
+      font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--heading);
+      transition: border-color 0.3s, background 0.3s; outline: none;
+    }
+    .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--crimson); background: #fff; }
+    .fg textarea { resize: vertical; min-height: 90px; }
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-btn {
+      width: 100%; padding: 15px; background: var(--crimson); color: #fff;
+      border: none; border-radius: 12px; font-size: 0.97rem; font-weight: 600;
+      cursor: pointer; transition: all 0.3s; font-family: 'Outfit', sans-serif;
+    }
+    .form-btn:hover { background: var(--crimson-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(181,18,27,0.3); }
+    .adm-action-btns { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+
+    .btn-cr {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--crimson); color: #fff; padding: 14px 28px;
+      border-radius: 50px; font-weight: 600; font-size: 0.92rem; text-decoration: none;
+      box-shadow: 0 6px 22px rgba(181,18,27,0.3); transition: all 0.3s; border: none; cursor: pointer;
+    }
+    .btn-cr:hover { background: var(--crimson-dark); transform: translateY(-2px); }
+    .btn-out-cr {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 2px solid rgba(181,18,27,0.28); color: var(--crimson); padding: 14px 28px;
+      border-radius: 50px; font-weight: 600; font-size: 0.92rem; text-decoration: none;
+      transition: all 0.3s; background: transparent;
+    }
+    .btn-out-cr:hover { background: var(--crimson-light); border-color: var(--crimson); }
+
+    /* ─────────── ACHIEVEMENTS ─────────── */
+    #achievements {
+      background: linear-gradient(to right, rgba(181, 18, 27, 0.85) 0%, rgba(12, 1, 3, 0.9) 100%), url('achievements_bg.png') center/cover no-repeat fixed;
+      position: relative; overflow: hidden;
+    }
+    #achievements::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .ach-wrap { position: relative; z-index: 1; }
+    .ach-head .sec-tag { background: rgba(216,167,59,0.18); color: var(--gold); }
+    .ach-head .sec-title { color: #fff; }
+    .ach-head .sec-title em { color: var(--gold); }
+    .ach-head .sec-body { color: rgba(255,255,255,0.68); }
+    .ctr-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; margin-top: 60px; }
+    .ctr-card {
+      text-align: center; background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(20px);
+      border-radius: 26px; padding: 50px 22px; transition: all 0.4s;
+    }
+    .ctr-card:hover { background: rgba(255,255,255,0.17); transform: translateY(-8px); }
+    .ctr-num { font-family: 'Playfair Display', serif; font-size: 3.8rem; font-weight: 900; color: var(--gold); display: block; line-height: 1; }
+    .ctr-suf { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); }
+    .ctr-lbl { color: rgba(255,255,255,0.68); font-size: 0.88rem; margin-top: 9px; letter-spacing: 0.5px; }
+
+    /* ─────────── TESTIMONIALS ─────────── */
+    #testimonials { background: #fff; }
+    .tsl-slider { overflow: hidden; }
+    .tsl-track { display: flex; gap: 22px; transition: transform 0.52s ease; }
+    .tsl-card {
+      flex: 0 0 calc(33.333% - 15px); background: var(--bg); border-radius: 24px;
+      padding: 38px; transition: all 0.35s; border: 2px solid transparent;
+    }
+    .tsl-card:hover { border-color: rgba(181,18,27,0.14); transform: translateY(-7px); box-shadow: 0 22px 58px rgba(0,0,0,0.08); }
+    .tsl-qmark { font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 1; color: rgba(181,18,27,0.18); margin-bottom: 16px; }
+    .tsl-stars { color: var(--gold); font-size: 1rem; margin-bottom: 18px; }
+    .tsl-txt { font-size: 0.94rem; color: var(--body); line-height: 1.82; margin-bottom: 24px; }
+    .tsl-author { display: flex; align-items: center; gap: 13px; }
+    .tsl-av {
+      width: 50px; height: 50px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--crimson), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 700; font-size: 0.96rem;
+    }
+    .tsl-name { font-weight: 700; color: var(--heading); font-size: 0.92rem; }
+    .tsl-role { font-size: 0.78rem; color: var(--body); }
+    .tsl-dots { display: flex; gap: 10px; justify-content: center; margin-top: 38px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(181,18,27,0.18); cursor: pointer; transition: all 0.3s; }
+    .dot.on { background: var(--crimson); width: 26px; border-radius: 5px; }
+
+    /* ─────────── NEWS ─────────── */
+    #news { background: var(--bg); }
+    .news-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 46px; }
+    .see-all { color: var(--crimson); font-weight: 600; text-decoration: none; font-size: 0.9rem; transition: gap 0.3s; display: flex; align-items: center; gap: 6px; }
+    .see-all:hover { gap: 10px; }
+    .news-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 22px; }
+    .ncard {
+      background: #fff; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.06); transition: all 0.4s; cursor: pointer;
+    }
+    .ncard:hover { transform: translateY(-8px); box-shadow: 0 22px 60px rgba(0,0,0,0.11); }
+    .n-img {
+      height: 200px; background-position: center !important; background-size: cover !important; position: relative;
+    }
+    .ncard:first-child .n-img { height: 270px; }
+    .n-tag-pill {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--gold); color: #fff; padding: 4px 13px; border-radius: 50px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+    }
+    .n-body { padding: 24px; }
+    .n-date { font-size: 0.78rem; color: var(--body); margin-bottom: 9px; }
+    .n-title { font-weight: 700; color: var(--heading); font-size: 0.98rem; line-height: 1.5; margin-bottom: 10px; }
+    .ncard:first-child .n-title { font-size: 1.18rem; }
+    .n-ex { font-size: 0.85rem; color: var(--body); line-height: 1.72; }
+
+    /* ─────────── CONTACT ─────────── */
+    #contact { background: #fff; }
+    .con-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .con-item { display: flex; gap: 18px; margin-bottom: 28px; align-items: flex-start; }
+    .con-ico {
+      width: 50px; height: 50px; background: var(--crimson-light); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s;
+    }
+    .con-item:hover .con-ico { background: var(--crimson); }
+    .con-ico i { width: 22px; height: 22px; color: var(--crimson); transition: color 0.3s; }
+    .con-item:hover .con-ico i { color: #fff; }
+    .con-txt h4 { font-weight: 700; color: var(--heading); margin-bottom: 4px; }
+    .con-txt p, .con-txt a { font-size: 0.9rem; color: var(--body); text-decoration: none; line-height: 1.65; display: block; }
+    .con-txt a:hover { color: var(--crimson); }
+    .map-box {
+      height: 240px; border-radius: 16px; margin-top: 22px;
+      background: linear-gradient(135deg, rgba(181,18,27,0.04), rgba(216,167,59,0.04));
+      border: 2px dashed rgba(181,18,27,0.2);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; cursor: pointer; transition: all 0.3s;
+    }
+    .map-box:hover { border-color: var(--crimson); background: rgba(181,18,27,0.04); }
+    .map-box i { width: 44px; height: 44px; color: rgba(181,18,27,0.5); }
+    .map-box span { font-weight: 600; color: var(--heading); font-size: 0.95rem; }
+    .map-box small { color: var(--body); font-size: 0.82rem; }
+
+    /* ─────────── FOOTER ─────────── */
+    footer { background: #0c0103; }
+    .ft-top { padding: 80px 5% 50px; max-width: 1380px; margin: 0 auto; }
+    .ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.6fr; gap: 46px; }
+    .ft-brand p { font-size: 0.875rem; line-height: 1.82; color: rgba(255,255,255,0.55); margin: 16px 0 24px; max-width: 300px; }
+    .soc { display: flex; gap: 9px; }
+    .soc-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .soc-btn:hover { background: var(--crimson); border-color: var(--crimson); transform: translateY(-3px); }
+    .soc-btn i { width: 17px; height: 17px; color: rgba(255,255,255,0.55); }
+    .soc-btn:hover i { color: #fff; }
+    .ft-col h4 {
+      color: #fff; font-weight: 600; font-size: 0.86rem; letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 18px; padding-bottom: 11px; position: relative;
+    }
+    .ft-col h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 28px; height: 2px; background: var(--crimson); }
+    .ft-links { list-style: none; }
+    .ft-links li { margin-bottom: 9px; }
+    .ft-links a {
+      color: rgba(255,255,255,0.52); text-decoration: none; font-size: 0.875rem;
+      transition: color 0.3s; display: flex; align-items: center; gap: 0px;
+    }
+    .ft-links a:hover { color: var(--gold); padding-left: 6px; }
+    .nl-form { display: flex; gap: 7px; margin-top: 14px; }
+    .nl-inp {
+      flex: 1; padding: 11px 14px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+      color: #fff; font-size: 0.85rem; outline: none; font-family: 'Outfit', sans-serif;
+      transition: border-color 0.3s;
+    }
+    .nl-inp:focus { border-color: var(--crimson); }
+    .nl-inp::placeholder { color: rgba(255,255,255,0.28); }
+    .nl-btn {
+      padding: 11px 16px; background: var(--crimson); border: none; border-radius: 10px;
+      color: #fff; cursor: pointer; transition: background 0.3s; font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+    }
+    .nl-btn:hover { background: var(--gold); }
+    .ft-chips { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 22px; }
+    .chip {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 5px 12px; font-size: 0.74rem; color: rgba(255,255,255,0.52);
+    }
+    .ft-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06); padding: 22px 5%;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1380px; margin: 0 auto; flex-wrap: wrap; gap: 12px;
+    }
+    .ft-copy { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
+    .ft-btm-links { display: flex; gap: 22px; }
+    .ft-btm-links a { color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+    .ft-btm-links a:hover { color: rgba(255,255,255,0.8); }
+
+    /* ─────────── FLOATING BUTTON ─────────── */
+    #fab {
+      position: fixed; bottom: 30px; right: 30px; z-index: 998;
+      display: flex; align-items: center; gap: 9px;
+      background: var(--crimson); color: #fff; padding: 15px 24px; border-radius: 50px;
+      font-weight: 600; font-size: 0.88rem; text-decoration: none;
+      box-shadow: 0 8px 32px rgba(181,18,27,0.45);
+      animation: fabFloat 3.5s ease-in-out infinite;
+      transition: box-shadow 0.3s;
+    }
+    #fab:hover { box-shadow: 0 16px 44px rgba(181,18,27,0.55); }
+    @keyframes fabFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+
+    #fab-wa {
+      position: fixed; bottom: 94px; right: 30px; z-index: 998;
+      display: flex; align-items: center; gap: 9px;
+      background: #25D366; color: #fff; padding: 15px 24px; border-radius: 50px;
+      font-weight: 600; font-size: 0.88rem; text-decoration: none;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.45);
+      animation: fabFloatWa 3.5s ease-in-out infinite 1.75s;
+      transition: box-shadow 0.3s;
+    }
+    #fab-wa:hover { box-shadow: 0 16px 44px rgba(37,211,102,0.55); }
+    @keyframes fabFloatWa { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+
+    /* ── POPUP DIALOG (SUCCESS METRIC) ── */
+    #custom-popup {
+      position: fixed; inset: 0; z-index: 99999;
+      background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: all 0.35s ease;
+      padding: 20px;
+    }
+    #custom-popup.open { opacity: 1; visibility: visible; }
+    .popup-card {
+      background: #fff; border-radius: 26px; padding: 42px 30px;
+      max-width: 480px; width: 100%; text-align: center;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.15); border: 1px solid rgba(0,0,0,0.05);
+      transform: scale(0.9); transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #custom-popup.open .popup-card { transform: scale(1); }
+    .popup-ico {
+      width: 72px; height: 72px; background: rgba(216,167,59,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; color: var(--gold);
+    }
+    .popup-ico i { width: 34px; height: 34px; }
+    .popup-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--heading); margin-bottom: 12px; }
+    .popup-desc { font-size: 0.94rem; color: var(--body); line-height: 1.7; margin-bottom: 28px; }
+    .popup-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--crimson); color: #fff; padding: 12px 32px;
+      border-radius: 50px; font-weight: 600; text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.3s; font-family: 'Outfit', sans-serif;
+    }
+    .popup-btn:hover { background: var(--crimson-dark); transform: translateY(-2px); }
+
+    /* ─────────── RESPONSIVE ─────────── */
+    @media(max-width:1100px){
+      .hero-content { grid-template-columns: 1fr; text-align: center; padding-top: 140px; }
+      .hero-desc { margin: 0 auto 38px; }
+      .hero-btns { justify-content: center; }
+      .hero-stats { max-width: 400px; margin: 40px auto 0; }
+      .quick-grid { grid-template-columns: repeat(2,1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-pill { left: 14px; }
+      .about-badge { bottom: -16px; right: -8px; }
+      .why-grid { grid-template-columns: repeat(2,1fr); }
+      .ac-panel { grid-template-columns: 1fr; }
+      .adm-grid { grid-template-columns: 1fr; }
+      .ctr-grid { grid-template-columns: repeat(2,1fr); }
+      .tsl-card { flex: 0 0 calc(50% - 11px); }
+      .news-grid { grid-template-columns: 1fr; }
+      .con-grid { grid-template-columns: 1fr; }
+      .ft-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media(max-width:768px){
+      .sec { padding: 70px 5%; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .gal-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gal-item.big { grid-row: span 1; }
+      .why-grid { grid-template-columns: 1fr; }
+      .ctr-grid { grid-template-columns: 1fr 1fr; }
+      .tsl-card { flex: 0 0 100%; }
+      .ft-grid { grid-template-columns: 1fr; }
+      .ft-bottom { flex-direction: column; text-align: center; }
+      #fab { bottom: 16px; right: 16px; padding: 12px 18px; font-size: 0.82rem; }
+      .academics-head { flex-direction: column; align-items: flex-start; }
+      .fg-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Scroll Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Loading Screen -->
+<div id="loader">
+  <div class="loader-emblem">SFX</div>
+  <div class="loader-name">St. Francis Xavier School</div>
+  <div class="loader-sub">Lucknow • Est. 2002</div>
+  <div class="loader-track"><div class="loader-fill"></div></div>
+</div>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/9151114885" id="fab-wa" target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
+  WhatsApp Us
+</a>
+
+<!-- Floating Admission Button -->
+<a href="#admissions" id="fab">
+  <i data-lucide="clipboard-list" style="width:17px;height:17px"></i>
+  Apply Now
+</a>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">
+      <div class="logo-box">SFX</div>
+      <div>
+        <div class="logo-title">St. Francis Xavier</div>
+        <div class="logo-caption">ICSE School · Est. 2002 · Lucknow</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#campus">Campus</a></li>
+      <li><a href="#news">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#admissions" class="nav-cta">Apply Now</a></li>
+    </ul>
+    <div class="hamburger" id="ham" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="drawer">
+  <ul>
+    <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#academics" onclick="closeMenu()">Academics</a></li>
+    <li><a href="#admissions" onclick="closeMenu()">Admissions</a></li>
+    <li><a href="#campus" onclick="closeMenu()">Campus</a></li>
+    <li><a href="#news" onclick="closeMenu()">Events</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    <li><a href="#admissions" onclick="closeMenu()" style="background:var(--crimson);color:#fff !important;text-align:center;border-radius:12px;margin-top:6px">Apply for Admission →</a></li>
+  </ul>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+
+  <div class="hero-grid-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">⭐ Established 2002 &nbsp;|&nbsp; ICSE Board &nbsp;|&nbsp; Lucknow, U.P.</div>
+      <h1 class="hero-h1">St. Francis<br><span>Xavier</span><br>School</h1>
+      <p class="hero-sub">Excellence · ICSE Curriculum · English Medium · Co-Educational</p>
+      <p class="hero-desc">Empowering young minds through academic excellence, strong values, innovative learning, and holistic development. Building tomorrow's leaders — today.</p>
+      <div class="hero-btns">
+        <a href="#admissions" class="btn-gold">
+          <i data-lucide="clipboard-list" style="width:18px;height:18px"></i>
+          Apply for Admission
+        </a>
+        <a href="#campus" class="btn-ghost-w">
+          <i data-lucide="play-circle" style="width:18px;height:18px"></i>
+          Virtual Campus Tour
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-val">2002</div>
+        <div class="hstat-lbl">Established</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">ICSE</div>
+        <div class="hstat-lbl">Curriculum</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">English</div>
+        <div class="hstat-lbl">Medium of Instruction</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-val">Co-ed</div>
+        <div class="hstat-lbl">Boys & Girls Together</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="hero-scroll-dot"></div>
+  </div>
+</section>
+
+<!-- ══════════ QUICK INFO ══════════ -->
+<section id="quick">
+  <div class="quick-grid wrap">
+    <div class="qcard r" style="transition-delay:0s">
+      <div class="q-icon"><i data-lucide="calendar"></i></div>
+      <div class="q-lbl">Year of Establishment</div>
+      <div class="q-val">2002</div>
+    </div>
+    <div class="qcard r" style="transition-delay:0.09s">
+      <div class="q-icon"><i data-lucide="book-open"></i></div>
+      <div class="q-lbl">Curriculum Board</div>
+      <div class="q-val">ICSE</div>
+    </div>
+    <div class="qcard r" style="transition-delay:0.18s">
+      <div class="q-icon"><i data-lucide="globe"></i></div>
+      <div class="q-lbl">Medium of Instruction</div>
+      <div class="q-val">English</div>
+    </div>
+    <div class="qcard r" style="transition-delay:0.27s">
+      <div class="q-icon"><i data-lucide="users"></i></div>
+      <div class="q-lbl">Student Gender Type</div>
+      <div class="q-val">Co-Educational</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about" class="sec">
+  <div class="about-grid wrap">
+    <div class="about-img-wrap r-l">
+      <div class="about-img-main">
+        <img src="school_entrance.jpg" alt="St. Francis Xavier School Entrance">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(12, 1, 3, 0.6) 0%, transparent 60%); pointer-events: none;"></div>
+      </div>
+      <div class="about-badge">
+        <span class="ab-num">20+</span>
+        <div class="ab-lbl">Years of<br>Excellence</div>
+      </div>
+      <div class="about-pill">
+        <div class="pill-ico"><i data-lucide="award"></i></div>
+        <div>
+          <div class="pill-t">ICSE Certified</div>
+          <div class="pill-s">Affiliated Board</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-text r-r">
+      <div class="sec-tag">🏫 Our Story</div>
+      <h2 class="sec-title">About St. Francis <em>Xavier School</em></h2>
+      <p class="sec-body" style="margin-bottom:18px">Founded in 2002, St. Francis Xavier School stands as a beacon of academic excellence in Lucknow. Located on Cantt Road, Lalbagh, our institution has been nurturing young minds through a perfect blend of the rigorous ICSE curriculum and holistic character development.</p>
+      <p class="sec-body">We believe education is not just about academic achievement — it's about shaping responsible, compassionate, and future-ready individuals who contribute meaningfully to society.</p>
+      <div class="mvv">
+        <div class="mvv-card">
+          <div class="mvv-t">🎯 Our Mission</div>
+          <div class="mvv-d">Provide world-class education that cultivates intellectual curiosity, moral integrity, and a lifelong love of learning.</div>
+        </div>
+        <div class="mvv-card">
+          <div class="mvv-t">🔭 Our Vision</div>
+          <div class="mvv-d">To be the premier institution that prepares students to lead, innovate, and serve in a global society.</div>
+        </div>
+        <div class="mvv-card">
+          <div class="mvv-t">💎 Core Values</div>
+          <div class="mvv-d">Excellence, Integrity, Compassion, Discipline, Innovation — principles that guide every aspect of school life.</div>
+        </div>
+        <div class="mvv-card">
+          <div class="mvv-t">🌟 Our Approach</div>
+          <div class="mvv-d">Student-centered learning that balances academics with co-curricular activities for all-round development.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHY CHOOSE US ══════════ -->
+<section id="why" class="sec">
+  <div class="wrap">
+    <div class="center r">
+      <div class="sec-tag">✨ Our Strengths</div>
+      <h2 class="sec-title">Why Choose <em>St. Francis Xavier</em>?</h2>
+      <p class="sec-body">We combine academic rigour with a nurturing environment to help every student reach their fullest potential.</p>
+    </div>
+    <div class="why-grid">
+      <div class="wcard r" style="transition-delay:0s">
+        <div class="w-ico"><i data-lucide="trending-up"></i></div>
+        <div class="w-t">Academic Excellence</div>
+        <div class="w-d">Consistently outstanding ICSE results with a track record of students securing top ranks across the state and beyond.</div>
+      </div>
+      <div class="wcard r" style="transition-delay:0.07s">
+        <div class="w-ico"><i data-lucide="users"></i></div>
+        <div class="w-t">Experienced Faculty</div>
+        <div class="w-d">Highly qualified and dedicated teachers who bring passion and subject expertise to every classroom interaction.</div>
+      </div>
+      <div class="wcard r" style="transition-delay:0.14s">
+        <div class="w-ico"><i data-lucide="book-open"></i></div>
+        <div class="w-t">ICSE Standards</div>
+        <div class="w-d">Comprehensive ICSE curriculum that prepares students for national and international academic opportunities.</div>
+      </div>
+      <div class="wcard r" style="transition-delay:0.21s">
+        <div class="w-ico"><i data-lucide="monitor"></i></div>
+        <div class="w-t">Smart Classrooms</div>
+        <div class="w-d">Technology-integrated learning spaces with smartboards, digital resources, and interactive tools for modern education.</div>
+      </div>
+      <div class="wcard r" style="transition-delay:0.28s">
+        <div class="w-ico"><i data-lucide="trophy"></i></div>
+        <div class="w-t">Sports Programs</div>
+        <div class="w-d">Comprehensive sports curriculum promoting physical fitness, teamwork, leadership, and a competitive winning spirit.</div>
+      </div>
+      <div class="wcard r" style="transition-delay:0.35s">
+        <div class="w-ico"><i data-lucide="music"></i></div>
+        <div class="w-t">Arts &amp; Activities</div>
+        <div class="w-d">Rich co-curricular programs in music, dance, drama, fine arts, and public speaking for complete personality development.</div>
+      </div>
+      <div class="wcard r" style="transition-delay:0.42s">
+        <div class="w-ico"><i data-lucide="shield-check"></i></div>
+        <div class="w-t">Safe Environment</div>
+        <div class="w-d">CCTV surveillance, trained security staff, and strict safety protocols ensuring every child's well-being at all times.</div>
+      </div>
+      <div class="wcard r" style="transition-delay:0.49s">
+        <div class="w-ico"><i data-lucide="zap"></i></div>
+        <div class="w-t">Future-Ready Education</div>
+        <div class="w-d">Coding, critical thinking, and life skills programs that prepare students to thrive in the challenges of tomorrow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ACADEMICS ══════════ -->
+<section id="academics" class="sec">
+  <div class="wrap">
+    <div class="academics-head r">
+      <div>
+        <div class="sec-tag">📘 Curriculum</div>
+        <h2 class="sec-title">Academic <em>Programs</em></h2>
+        <p class="sec-body">Nurturing curiosity, logical reasoning, and a passion for learning from nursery through senior board examinations.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab on" onclick="switchTab(this, 'primary-pane')">Pre-Primary &amp; Primary</button>
+        <button class="tab" onclick="switchTab(this, 'middle-pane')">Middle School</button>
+        <button class="tab" onclick="switchTab(this, 'senior-pane')">Senior Secondary</button>
+      </div>
+    </div>
+
+    <!-- Pre-Primary & Primary Pane -->
+    <div class="tab-pane on r" id="primary-pane">
+      <div class="ac-panel">
+        <div>
+          <span class="ac-badge">Nursery to Class V</span>
+          <h3 class="ac-h3">Foundational &amp; Primary Education</h3>
+          <p class="ac-p">Our primary school curriculum centers on building strong foundational blocks in language, logical mathematics, and environmental understanding. Through structured student-centric activities, we inculcate moral values and basic life skills.</p>
+          <p class="ac-p">We promote play-based inquiry for pre-primary students, moving progressively to comprehensive analytical learning models in higher primary levels.</p>
+        </div>
+        <div class="outcomes">
+          <h4>Key Outcomes &amp; Core Subjects</h4>
+          <ul class="out-list">
+            <li><span class="out-dot"></span><strong>Subjects:</strong> English, Mathematics, Environmental Studies (EVS), Hindi, Computer Science, General Knowledge.</li>
+            <li><span class="out-dot"></span><strong>Language Proficiency:</strong> Advanced reading comprehension, phonetics, and clear verbal communication.</li>
+            <li><span class="out-dot"></span><strong>Logical Reasoning:</strong> Fundamental mathematical problem solving and operational arithmetic.</li>
+            <li><span class="out-dot"></span><strong>Co-Curriculars:</strong> Physical education, vocal music, sketching, storytelling, and soft-skills workshop sessions.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle School Pane -->
+    <div class="tab-pane r" id="middle-pane">
+      <div class="ac-panel">
+        <div>
+          <span class="ac-badge">Class VI to VIII</span>
+          <h3 class="ac-h3">Preparatory Middle Years</h3>
+          <p class="ac-p">Middle school is a transition phase designed to guide students from observational learning to critical, concept-based analysis. We introduce departmentalized instruction where expert educators focus on independent subject disciplines.</p>
+          <p class="ac-p">We lay absolute priority on scientific experiments, digital computing fundamentals, and literature analysis, aligning students towards board preparations.</p>
+        </div>
+        <div class="outcomes">
+          <h4>Key Outcomes &amp; Core Subjects</h4>
+          <ul class="out-list">
+            <li><span class="out-dot"></span><strong>Subjects:</strong> English Language &amp; Literature, Mathematics, Physics, Chemistry, Biology, History &amp; Civics, Geography, Hindi, computer applications.</li>
+            <li><span class="out-dot"></span><strong>Experimental Science:</strong> Practical demonstration sessions in dedicated laboratory spaces.</li>
+            <li><span class="out-dot"></span><strong>Critical Reading:</strong> Comprehensive literary text studies and advanced creative composition.</li>
+            <li><span class="out-dot"></span><strong>Technical Skills:</strong> Introduction to algorithms, basic programming syntax, and office automation software.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Senior Secondary Pane -->
+    <div class="tab-pane r" id="senior-pane">
+      <div class="ac-panel">
+        <div>
+          <span class="ac-badge">Class IX &amp; X</span>
+          <h3 class="ac-h3">Rigorous ICSE Board Program</h3>
+          <p class="ac-p">Designed in strict compliance with the Council for the Indian School Certificate Examinations (CISCE). The ICSE syllabus challenges students to apply comprehensive knowledge and develop deep problem-solving insights across all subjects.</p>
+          <p class="ac-p">Extensive preparatory sessions, model mock exams, and personalized remedial tracking support students in achieving stellar board standings.</p>
+        </div>
+        <div class="outcomes">
+          <h4>Key Outcomes &amp; Board Focus</h4>
+          <ul class="out-list">
+            <li><span class="out-dot"></span><strong>Stream Tracks:</strong> Focused tracks in Science and Commerce subjects with multi-disciplinary electives.</li>
+            <li><span class="out-dot"></span><strong>Analytical Application:</strong> Direct practice of past board question structures and systematic scoring guidance.</li>
+            <li><span class="out-dot"></span><strong>Computer Coding:</strong> In-depth object-oriented programming module using Java.</li>
+            <li><span class="out-dot"></span><strong>Career Guidance:</strong> Stream selection assessments, higher-education prep counsel, and character leadership certificates.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CAMPUS GALLERY ══════════ -->
+<section id="campus" class="sec">
+  <div class="wrap">
+    <div class="center r">
+      <div class="sec-tag">🎨 Campus Life</div>
+      <h2 class="sec-title">Explore Our <em>Vibrant Campus</em></h2>
+      <p class="sec-body">A glance inside our modern facilities, state-of-the-art labs, creative studios, and active play fields designed for growth.</p>
+    </div>
+
+    <!-- Gallery Filters -->
+    <div class="gal-filters r">
+      <button class="gf on" onclick="filterGallery(this, 'all')">All Campus</button>
+      <button class="gf" onclick="filterGallery(this, 'infra')">Infrastructure</button>
+      <button class="gf" onclick="filterGallery(this, 'academics')">Academics &amp; Labs</button>
+      <button class="gf" onclick="filterGallery(this, 'sports')">Sports &amp; Arts</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gal-grid wrap r">
+      <!-- Item 1 (Big) -->
+      <div class="gal-item big" data-category="infra">
+        <div class="gal-bg" style="background: url('gal_infra.png');"></div>
+        <div class="gal-overlay">
+          <div class="gal-lbl">Main Academic Block</div>
+        </div>
+        <div class="gal-glass">Infrastructure</div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="gal-item" data-category="academics">
+        <div class="gal-bg" style="background: url('gal_science.png');"></div>
+        <div class="gal-overlay">
+          <div class="gal-lbl">Science Laboratory</div>
+        </div>
+        <div class="gal-glass">Academics</div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="gal-item" data-category="academics">
+        <div class="gal-bg" style="background: url('gal_library.png');"></div>
+        <div class="gal-overlay">
+          <div class="gal-lbl">Central Library</div>
+        </div>
+        <div class="gal-glass">Academics</div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="gal-item" data-category="academics">
+        <div class="gal-bg" style="background: url('gal_computer.png');"></div>
+        <div class="gal-overlay">
+          <div class="gal-lbl">Computer Science Lab</div>
+        </div>
+        <div class="gal-glass">Academics</div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="gal-item" data-category="sports">
+        <div class="gal-bg" style="background: url('gal_sports.png');"></div>
+        <div class="gal-overlay">
+          <div class="gal-lbl">Athletics &amp; Sports Ground</div>
+        </div>
+        <div class="gal-glass">Sports</div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="gal-item" data-category="sports">
+        <div class="gal-bg" style="background: url('gal_arts.png');"></div>
+        <div class="gal-overlay">
+          <div class="gal-lbl">Creative Arts Studio</div>
+        </div>
+        <div class="gal-glass">Arts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ADMISSIONS ══════════ -->
+<section id="admissions" class="sec">
+  <div class="wrap">
+    <div class="adm-grid">
+      <!-- Admission Steps (Left) -->
+      <div class="r-l">
+        <div class="sec-tag">📝 Enrolment</div>
+        <h2 class="sec-title">Admission <em>Process</em></h2>
+        <p class="sec-body" style="margin-bottom: 40px;">Joining St. Francis Xavier School is the first step toward a bright academic journey. Our admission process is simple, structured, and transparent.</p>
+
+        <!-- Timeline Steps -->
+        <div class="tl-step">
+          <div class="tl-num">01</div>
+          <div class="tl-body">
+            <h4>Inquiry Form submission</h4>
+            <p>Fill out the basic admission inquiry form (provided to the right) with student details, contact numbers, and seeking grade.</p>
+          </div>
+        </div>
+        <div class="tl-line"></div>
+
+        <div class="tl-step">
+          <div class="tl-num">02</div>
+          <div class="tl-body">
+            <h4>Document Submission</h4>
+            <p>Our admissions desk registers your application. You will be requested to submit student birth certificate, transfer certificates, and previous progress logs.</p>
+          </div>
+        </div>
+        <div class="tl-line"></div>
+
+        <div class="tl-step">
+          <div class="tl-num">03</div>
+          <div class="tl-body">
+            <h4>Assessment &amp; Interaction</h4>
+            <p>An interactive, stress-free assessment is scheduled for the student, followed by a friendly chat with parents to align values.</p>
+          </div>
+        </div>
+        <div class="tl-line"></div>
+
+        <div class="tl-step">
+          <div class="tl-num">04</div>
+          <div class="tl-body">
+            <h4>Fee Payment &amp; Confirmation</h4>
+            <p>Upon verification of assessment results and successful document reviews, the fee structure is paid to confirm registration.</p>
+          </div>
+        </div>
+
+        <div class="adm-action-btns">
+          <a href="#custom-popup" class="btn-cr" onclick="showDownloadProspectus(event)">
+            <i data-lucide="download" style="width:17px;height:17px"></i> Prospectus 2026
+          </a>
+          <a href="#custom-popup" class="btn-out-cr" onclick="showFeeStructure(event)">
+            <i data-lucide="file-text" style="width:17px;height:17px"></i> Fee Structure
+          </a>
+        </div>
+      </div>
+
+      <!-- Admission Inquiry Form (Right) -->
+      <div class="form-card r-r">
+        <h3>Online Admission Inquiry</h3>
+        <form id="inquiryForm" onsubmit="handleInquiry(event)">
+          <div class="fg">
+            <label for="studentName">Student Full Name *</label>
+            <input type="text" id="studentName" placeholder="Enter student's name" required>
+          </div>
+
+          <div class="fg-row">
+            <div class="fg">
+              <label for="grade">Seeking Grade *</label>
+              <select id="grade" required>
+                <option value="">Select Grade</option>
+                <option value="Nursery">Nursery / KG</option>
+                <option value="Primary I-V">Primary (I - V)</option>
+                <option value="Middle VI-VIII">Middle School (VI - VIII)</option>
+                <option value="Senior IX-X">Senior Board (IX - X)</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="dob">Date of Birth *</label>
+              <input type="date" id="dob" required>
+            </div>
+          </div>
+
+          <div class="fg-row">
+            <div class="fg">
+              <label for="parentName">Parent / Guardian Name *</label>
+              <input type="text" id="parentName" placeholder="Enter parent's full name" required>
+            </div>
+            <div class="fg">
+              <label for="phone">Active Mobile Number *</label>
+              <input type="tel" id="phone" placeholder="Enter 10-digit number" pattern="[0-9]{10}" required>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="email">Active Email Address *</label>
+            <input type="email" id="email" placeholder="example@mail.com" required>
+          </div>
+
+          <div class="fg">
+            <label for="comments">Previous Academic History / Notes</label>
+            <textarea id="comments" placeholder="Describe previous school details, achievements or specific queries..."></textarea>
+          </div>
+
+          <button type="submit" class="form-btn">
+            Submit Application Inquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ACHIEVEMENTS ══════════ -->
+<section id="achievements" class="sec">
+  <div class="wrap ach-wrap">
+    <div class="center ach-head r">
+      <div class="sec-tag">🏆 Our Legacy</div>
+      <h2 class="sec-title">Celebrating <em>Academic Pride</em></h2>
+      <p class="sec-body">A legacy of over two decades dedicated to nurturing, empowering, and transforming lives.</p>
+    </div>
+
+    <!-- Counters Grid -->
+    <div class="ctr-grid">
+      <div class="ctr-card r" style="transition-delay:0s">
+        <div>
+          <span class="ctr-num" data-target="24">0</span>
+        </div>
+        <div class="ctr-lbl">Years of Academic Legacy</div>
+      </div>
+
+      <div class="ctr-card r" style="transition-delay:0.1s">
+        <div>
+          <span class="ctr-num" data-target="100">0</span><span class="ctr-suf">%</span>
+        </div>
+        <div class="ctr-lbl">ICSE Board Success Rate</div>
+      </div>
+
+      <div class="ctr-card r" style="transition-delay:0.2s">
+        <div>
+          <span class="ctr-num" data-target="35">0</span><span class="ctr-suf">+</span>
+        </div>
+        <div class="ctr-lbl">District &amp; State Awards</div>
+      </div>
+
+      <div class="ctr-card r" style="transition-delay:0.3s">
+        <div>
+          <span class="ctr-num" data-target="5000">0</span><span class="ctr-suf">+</span>
+        </div>
+        <div class="ctr-lbl">Alumni Thriving Globally</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section id="testimonials" class="sec">
+  <div class="wrap">
+    <div class="center r">
+      <div class="sec-tag">💬 Feedback</div>
+      <h2 class="sec-title">What Our <em>Parents &amp; Alumni Say</em></h2>
+      <p class="sec-body">Hear directly from parents, current students, and successful alumni about the impact of St. Francis Xavier School.</p>
+    </div>
+
+    <div class="tsl-slider r" style="margin-top: 50px;">
+      <div class="tsl-track">
+        <!-- Card 1 -->
+        <div class="tsl-card">
+          <div class="tsl-qmark">“</div>
+          <div class="tsl-stars">⭐⭐⭐⭐⭐</div>
+          <p class="tsl-txt">"St. Francis Xavier School offers an incredible balance of strict academic standards and caring personality development. My daughter has grown into a highly confident student."</p>
+          <div class="tsl-author">
+            <div class="tsl-av">VS</div>
+            <div>
+              <div class="tsl-name">Vikram Sen</div>
+              <div class="tsl-role">Parent of Class VIII Student</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tsl-card">
+          <div class="tsl-qmark">“</div>
+          <div class="tsl-stars">⭐⭐⭐⭐⭐</div>
+          <p class="tsl-txt">"The faculty is extremely dedicated. Teachers pay personal attention to students' specific weaknesses and help them systematically overcome learning barriers."</p>
+          <div class="tsl-author">
+            <div class="tsl-av">RA</div>
+            <div>
+              <div class="tsl-name">Ritu Agrawal</div>
+              <div class="tsl-role">Parent of Class X Student</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="tsl-card">
+          <div class="tsl-qmark">“</div>
+          <div class="tsl-stars">⭐⭐⭐⭐⭐</div>
+          <p class="tsl-txt">"Attending SFX Lucknow laid down the strong technical and ethical values that enabled me to clear competitive national exams. A premium institute for every child."</p>
+          <div class="tsl-author">
+            <div class="tsl-av">NK</div>
+            <div>
+              <div class="tsl-name">Nitin Kumar</div>
+              <div class="tsl-role">Alumnus, Senior Software Engineer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="tsl-card">
+          <div class="tsl-qmark">“</div>
+          <div class="tsl-stars">⭐⭐⭐⭐⭐</div>
+          <p class="tsl-txt">"A truly safe, clean, and inspiring environment. My children look forward to going to school every single day, which is the biggest success metric."</p>
+          <div class="tsl-author">
+            <div class="tsl-av">SM</div>
+            <div>
+              <div class="tsl-name">Sunita Mishra</div>
+              <div class="tsl-role">Parent of Class III &amp; VI Students</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Navigation Dots -->
+      <div class="tsl-dots">
+        <span class="dot on" onclick="showSlide(0)"></span>
+        <span class="dot" onclick="showSlide(1)"></span>
+        <span class="dot" onclick="showSlide(2)"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EVENTS & NEWS ══════════ -->
+<section id="news" class="sec">
+  <div class="wrap">
+    <div class="news-head r">
+      <div>
+        <div class="sec-tag">📅 Dynamic Portal</div>
+        <h2 class="sec-title">School <em>Events &amp; Announcements</em></h2>
+      </div>
+      <a href="#custom-popup" class="see-all" onclick="showAllEvents(event)">
+        See All Events <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+      </a>
+    </div>
+
+    <!-- News Grid -->
+    <div class="news-grid r">
+      <!-- Large Feature Card -->
+      <div class="ncard" onclick="openNews(1)">
+        <div class="n-img" style="background: url('news_award.png');">
+          <span class="n-tag-pill">Academics</span>
+        </div>
+        <div class="n-body">
+          <div class="n-date">May 15, 2026</div>
+          <h3 class="n-title">SFX Lucknow Records 100% Pass Percentage in ICSE Exams</h3>
+          <p class="n-ex">St. Francis Xavier School celebrates record-breaking board examination outcomes with 100% students qualifying and over 85% scoring distinct first classes across Lucknow district.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="ncard" onclick="openNews(2)">
+        <div class="n-img" style="background: url('news_science.png');">
+          <span class="n-tag-pill">Campus</span>
+        </div>
+        <div class="n-body">
+          <div class="n-date">April 28, 2026</div>
+          <h3 class="n-title">Annual Sci-Tech Exhibition "Innova"</h3>
+          <p class="n-ex">Middle and senior school students presented outstanding working robotics models and clean-energy prototypes.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="ncard" onclick="openNews(3)">
+        <div class="n-img" style="background: url('news_football.png');">
+          <span class="n-tag-pill">Sports</span>
+        </div>
+        <div class="n-body">
+          <div class="n-date">March 12, 2026</div>
+          <h3 class="n-title">District Football Meet Gold Medal</h3>
+          <p class="n-ex">The SFX Football squad secured the district title in a thrilling penalty shootout match final.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CONTACT & MAP ══════════ -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="con-grid">
+      <!-- Contact details (Left) -->
+      <div class="r-l">
+        <div class="sec-tag">📞 Support</div>
+        <h2 class="sec-title">Get in <em>Touch</em></h2>
+        <p class="sec-body" style="margin-bottom: 36px;">We are always available to answer your questions regarding admissions, fee details, academic schedules, or career alignments.</p>
+
+        <div class="con-item">
+          <div class="con-ico"><i data-lucide="map-pin"></i></div>
+          <div class="con-txt">
+            <h4>Address</h4>
+            <p>Cantt Road, Lalbagh, Lucknow, Uttar Pradesh 226001</p>
+          </div>
+        </div>
+
+        <div class="con-item">
+          <div class="con-ico"><i data-lucide="phone"></i></div>
+          <div class="con-txt">
+            <h4>Call Helpline</h4>
+            <p><a href="tel:09335814885">09335814885</a></p>
+          </div>
+        </div>
+
+        <div class="con-item">
+          <div class="con-ico"><i data-lucide="mail"></i></div>
+          <div class="con-txt">
+            <h4>Email Support</h4>
+            <p><a href="mailto:info@stfrancisxavierschool.com">info@stfrancisxavierschool.com</a></p>
+            <p><a href="mailto:admissions@stfrancisxavierschool.com">admissions@stfrancisxavierschool.com</a></p>
+          </div>
+        </div>
+
+        <!-- Google Maps Iframe -->
+        <div style="margin-top: 22px; border-radius: 16px; overflow: hidden; height: 240px; box-shadow: 0 4px 18px rgba(0,0,0,0.06);">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.916075600293!2d80.9363844!3d26.8426215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfdaec747e393%3A0x8090523a169bba3e!2sSt.%20Francis%20Xavier%20School!5e0!3m2!1sen!2sin!4v1779350387504!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+      <!-- Quick Message Form (Right) -->
+      <div class="form-card r-r">
+        <h3>Send A Quick Message</h3>
+        <form id="messageForm" onsubmit="handleMessage(event)">
+          <div class="fg">
+            <label for="msgName">Your Full Name *</label>
+            <input type="text" id="msgName" placeholder="Enter your name" required>
+          </div>
+
+          <div class="fg">
+            <label for="msgEmail">Email Address *</label>
+            <input type="email" id="msgEmail" placeholder="example@mail.com" required>
+          </div>
+
+          <div class="fg">
+            <label for="msgSubject">Subject *</label>
+            <input type="text" id="msgSubject" placeholder="Inquiry subject..." required>
+          </div>
+
+          <div class="fg">
+            <label for="msgBody">Your Message *</label>
+            <textarea id="msgBody" placeholder="Type your message details..." required></textarea>
+          </div>
+
+          <button type="submit" class="form-btn">
+            Send Message Securely
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="ft-top">
+    <div class="ft-grid">
+      <!-- BRAND COLUMN -->
+      <div class="ft-brand">
+        <a href="#hero" class="nav-logo" style="margin-bottom: 20px;">
+          <div class="logo-box">SFX</div>
+          <div>
+            <div class="logo-title" style="color: #fff;">St. Francis Xavier</div>
+            <div class="logo-caption" style="color: rgba(255,255,255,0.4);">Lucknow</div>
+          </div>
+        </a>
+        <p>A prestigious co-educational ICSE board academy dedicated to educational excellence, strong moral values, and global leader development.</p>
+        <div class="soc">
+          <a href="https://facebook.com" class="soc-btn" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" class="soc-btn" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://twitter.com" class="soc-btn" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://youtube.com" class="soc-btn" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="ft-col">
+        <h4>Overview</h4>
+        <ul class="ft-links">
+          <li><a href="#hero">Home Base</a></li>
+          <li><a href="#about">About Story</a></li>
+          <li><a href="#why">Our Strengths</a></li>
+          <li><a href="#campus">Campus Life</a></li>
+          <li><a href="#news">News &amp; Events</a></li>
+        </ul>
+      </div>
+
+      <!-- ACADEMICS -->
+      <div class="ft-col">
+        <h4>Academics</h4>
+        <ul class="ft-links">
+          <li><a href="#academics" onclick="document.querySelectorAll('.tab')[0].click()">Primary School</a></li>
+          <li><a href="#academics" onclick="document.querySelectorAll('.tab')[1].click()">Middle School</a></li>
+          <li><a href="#academics" onclick="document.querySelectorAll('.tab')[2].click()">Senior Board</a></li>
+          <li><a href="#academics">Curriculum</a></li>
+          <li><a href="#academics">Outcomes</a></li>
+        </ul>
+      </div>
+
+      <!-- ADMISSIONS -->
+      <div class="ft-col">
+        <h4>Admissions</h4>
+        <ul class="ft-links">
+          <li><a href="#admissions">How to Apply</a></li>
+          <li><a href="#admissions">Process Details</a></li>
+          <li><a href="#admissions" onclick="showFeeStructure(event)">Fee Structures</a></li>
+          <li><a href="#admissions" onclick="showDownloadProspectus(event)">Prospectus</a></li>
+          <li><a href="#contact">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <!-- NEWSLETTER Column -->
+      <div class="ft-col">
+        <h4>Stay Updated</h4>
+        <p style="font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Subscribe to our monthly newsletter digest to receive academic highlights and calendar updates.</p>
+        <form class="nl-form" onsubmit="handleNewsletter(event)">
+          <input type="email" class="nl-inp" placeholder="Your Email Address" required>
+          <button type="submit" class="nl-btn"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
+        </form>
+        <div class="ft-chips">
+          <span class="chip">#ICSE2026</span>
+          <span class="chip">#SFX_Lucknow</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER BOTTOM -->
+  <div class="ft-bottom">
+    <div class="ft-copy">
+      &copy; 2026 St. Francis Xavier School, Lucknow. All Rights Reserved. Affiliated with the ICSE Board (Est. 2002).
+    </div>
+    <div class="ft-btm-links">
+      <a href="#custom-popup" onclick="showPrivacy(event)">Privacy Policy</a>
+      <a href="#custom-popup" onclick="showTerms(event)">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ CUSTOM METRIC POPUP ══════════ -->
+<div id="custom-popup">
+  <div class="popup-card">
+    <div class="popup-ico">
+      <i data-lucide="check-circle-2"></i>
+    </div>
+    <h3 class="popup-title" id="pop-title">Inquiry Sent</h3>
+    <p class="popup-desc" id="pop-desc">Description of transaction...</p>
+    <button class="popup-btn" onclick="closePopup()">
+      Dismiss <i data-lucide="x" style="width:15px;height:15px"></i>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+  // ── INITIALIZE LUCIDE ICONS ──
+  lucide.createIcons();
+
+  // ── LOADER SCRIPT ──
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    loader.classList.add('out');
+    // Initialize observer animations
+    initScrollReveals();
+    initCounters();
+    // Testimonial init
+    showSlide(0);
+  });
+
+  // ── SCROLL PROGRESS & SOLID NAVBAR ──
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    const progressBar = document.getElementById('progress-bar');
+    
+    // Progress calculation
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    progressBar.style.width = scrolled + '%';
+
+    // Solid Nav Shifting
+    if (window.scrollY > 40) {
+      nav.classList.add('solid');
+    } else {
+      nav.classList.remove('solid');
+    }
+  });
+
+  // ── MOBILE HAMBURGER & DRAWER MENU ──
+  function toggleMenu() {
+    const ham = document.getElementById('ham');
+    const drawer = document.getElementById('drawer');
+    ham.classList.toggle('open');
+    drawer.classList.toggle('open');
+  }
+  function closeMenu() {
+    const ham = document.getElementById('ham');
+    const drawer = document.getElementById('drawer');
+    ham.classList.remove('open');
+    drawer.classList.remove('open');
+  }
+
+  // ── TABS CURRICULUM SWITCHER ──
+  function switchTab(element, paneId) {
+    const container = element.closest('.tabs');
+    container.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+    element.classList.add('on');
+
+    const paneContainer = document.getElementById('academics');
+    paneContainer.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('on'));
+    
+    const activePane = document.getElementById(paneId);
+    activePane.classList.add('on');
+    
+    // trigger internal reveal animation in panel
+    activePane.classList.remove('vis');
+    setTimeout(() => {
+      activePane.classList.add('vis');
+    }, 20);
+  }
+
+  // ── CAMPUS GALLERY CAT FILTERS ──
+  function filterGallery(element, category) {
+    const filters = element.closest('.gal-filters');
+    filters.querySelectorAll('.gf').forEach(btn => btn.classList.remove('on'));
+    element.classList.add('on');
+
+    const items = document.querySelectorAll('.gal-item');
+    items.forEach(item => {
+      if (category === 'all' || item.getAttribute('data-category') === category) {
+        item.style.display = 'block';
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'scale(1)';
+        }, 10);
+      } else {
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+          item.style.display = 'none';
+        }, 300);
+      }
+    });
+  }
+
+  // ── TESTIMONIALS SLIDER DYNAMICS ──
+  let slideIndex = 0;
+  function showSlide(index) {
+    const track = document.querySelector('.tsl-track');
+    const cards = document.querySelectorAll('.tsl-card');
+    const dots = document.querySelectorAll('.tsl-dots .dot');
+    if(cards.length === 0) return;
+
+    let itemsPerView = 3;
+    if (window.innerWidth <= 768) {
+      itemsPerView = 1;
+    } else if (window.innerWidth <= 1100) {
+      itemsPerView = 2;
+    }
+
+    const maxIdx = cards.length - itemsPerView;
+    slideIndex = Math.max(0, Math.min(index, maxIdx));
+
+    // dynamic mathematics based on client widths plus flex gap offsets
+    const cardWidth = cards[0].offsetWidth + 22; // card size + margin gap
+    track.style.transform = `translateX(-${slideIndex * cardWidth}px)`;
+
+    // Toggle DOT status
+    dots.forEach((dot, dIdx) => {
+      if(dIdx === slideIndex) {
+        dot.classList.add('on');
+      } else {
+        dot.classList.remove('on');
+      }
+    });
+  }
+  window.addEventListener('resize', () => {
+    showSlide(slideIndex);
+  });
+
+  // ── INTERSECTION OBSERVER SCROLL REVEALS ──
+  function initScrollReveals() {
+    const reveals = document.querySelectorAll('.r, .r-l, .r-r');
+    
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('vis');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  }
+
+  // ── ACHIEVEMENTS INCREMENTING COUNTERS ──
+  function initCounters() {
+    const counters = document.querySelectorAll('.ctr-num');
+    const timeSpeed = 60; // speed quotient
+
+    const runCount = (counter) => {
+      const targetVal = +counter.getAttribute('data-target');
+      let countVal = 0;
+      const stepIncrement = targetVal / timeSpeed;
+
+      const incrementor = () => {
+        countVal += stepIncrement;
+        if(countVal < targetVal) {
+          counter.innerText = Math.ceil(countVal);
+          setTimeout(incrementor, 20);
+        } else {
+          counter.innerText = targetVal;
+        }
+      };
+      incrementor();
+    };
+
+    const counterObs = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          runCount(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    counters.forEach(ctr => counterObs.observe(ctr));
+  }
+
+  // ── CUSTOM MODAL POPUP TRIGGERS ──
+  function openPopup(title, description, iconName = 'check-circle-2') {
+    const popup = document.getElementById('custom-popup');
+    const pTitle = document.getElementById('pop-title');
+    const pDesc = document.getElementById('pop-desc');
+    const pIco = popup.querySelector('.popup-ico');
+
+    pTitle.innerText = title;
+    pDesc.innerText = description;
+    pIco.innerHTML = `<i data-lucide="${iconName}"></i>`;
+    lucide.createIcons();
+
+    popup.classList.add('open');
+  }
+  function closePopup() {
+    const popup = document.getElementById('custom-popup');
+    popup.classList.remove('open');
+  }
+
+  // Form Submissions Actions
+  function handleInquiry(event) {
+    event.preventDefault();
+    const btn = event.target.querySelector('.form-btn');
+    btn.innerHTML = '<i data-lucide="loader-2" style="width:16px;height:16px;animation:pulse 1s linear infinite"></i> Processing...';
+    lucide.createIcons();
+
+    setTimeout(() => {
+      event.target.reset();
+      btn.innerText = 'Submit Application Inquiry';
+      openPopup('Application Inquiry Sent!', 'Thank you for your inquiry. Our admissions helpdesk has registered your student and will call you in 24-48 business hours.', 'mail-check');
+    }, 1200);
+  }
+
+  function handleMessage(event) {
+    event.preventDefault();
+    const btn = event.target.querySelector('.form-btn');
+    btn.innerText = 'Sending Message...';
+
+    setTimeout(() => {
+      event.target.reset();
+      btn.innerText = 'Send Message Securely';
+      openPopup('Message Sent Successfully!', 'Our administrative desk has received your notes and will reply via email shortly.', 'send');
+    }, 1200);
+  }
+
+  function handleNewsletter(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('.nl-inp').value;
+    event.target.reset();
+    openPopup('Subscribed Successfully!', `Email address "${email}" has been added to our circular mailing distribution list.`, 'sparkles');
+  }
+
+  // Call-To-Action Simulation Triggers
+  function showDownloadProspectus(event) {
+    event.preventDefault();
+    openPopup('Prospectus Downloaded!', 'The St. Francis Xavier School 2026 Academic Catalog prospectus has been generated and downloaded successfully.', 'file-down');
+  }
+  function showFeeStructure(event) {
+    event.preventDefault();
+    openPopup('Fee Structure Details', 'The complete ICSE Board grade-wise quarterly fee structures document for St. Francis Xavier Lucknow has been retrieved.', 'wallet');
+  }
+  function showAllEvents(event) {
+    event.preventDefault();
+    openPopup('Calendar Events Archive', 'The complete academic events calendar database, including summer holidays, sports schedules, and monthly exams, has been loaded.', 'calendar-days');
+  }
+  function openNews(newsId) {
+    const titles = {
+      1: "100% ICSE Board Success",
+      2: "Science Exhibition 'Innova'",
+      3: "District Football Championship"
+    };
+    const descs = {
+      1: "SFX School continues its historic academic distinction achievements with students scoring state ranks in ICSE 2026 examinations.",
+      2: "Middle and Senior school students demonstrated outstanding scientific research projects on renewable energy, solar grids, and automated programming tools.",
+      3: "Our boys football team claimed the district champion trophy, finishing first among twenty regional participating school lineups."
+    };
+    openPopup(titles[newsId], descs[newsId] + ' (Read-only database record)', 'book-marked');
+  }
+  function showMap() {
+    openPopup('Campus Maps & Navigation', 'GPS Coordinates Loaded: Cantt Road, Lalbagh, Lucknow 226001. Directing connection to external mapping routers...', 'map-pin');
+  }
+  function showPrivacy(event) {
+    event.preventDefault();
+    openPopup('Privacy Protocols', 'St. Francis Xavier School maintains complete compliance with student data protections. No personal profiles are ever shared.', 'shield-alert');
+  }
+  function showTerms(event) {
+    event.preventDefault();
+    openPopup('Terms of Application', 'By filling out online admission inquiries, you consent to receive informational messages and advisory alerts from St. Francis Xavier School.', 'scale');
+  }
+</script>
+</body>
+</html>
