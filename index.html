@@ -1178,13 +1178,13 @@
         <form id="inquiryForm" onsubmit="handleInquiry(event)">
           <div class="fg">
             <label for="studentName">Student Full Name *</label>
-            <input type="text" id="studentName" placeholder="Enter student's name" required>
+            <input type="text" id="studentName" name="studentName" placeholder="Enter student's name" required>
           </div>
 
           <div class="fg-row">
             <div class="fg">
               <label for="grade">Seeking Grade *</label>
-              <select id="grade" required>
+              <select id="grade" name="grade" required>
                 <option value="">Select Grade</option>
                 <option value="Nursery">Nursery / KG</option>
                 <option value="Primary I-V">Primary (I - V)</option>
@@ -1194,24 +1194,24 @@
             </div>
             <div class="fg">
               <label for="dob">Date of Birth *</label>
-              <input type="date" id="dob" required>
+              <input type="date" id="dob" name="dob" required>
             </div>
           </div>
 
           <div class="fg-row">
             <div class="fg">
               <label for="parentName">Parent / Guardian Name *</label>
-              <input type="text" id="parentName" placeholder="Enter parent's full name" required>
+              <input type="text" id="parentName" name="parentName" placeholder="Enter parent's full name" required>
             </div>
             <div class="fg">
               <label for="phone">Active Mobile Number *</label>
-              <input type="tel" id="phone" placeholder="Enter 10-digit number" pattern="[0-9]{10}" required>
+              <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit number" pattern="[0-9]{10}" required>
             </div>
           </div>
 
           <div class="fg">
             <label for="email">Active Email Address *</label>
-            <input type="email" id="email" placeholder="example@mail.com" required>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
           </div>
 
           <div class="fg">
@@ -1449,22 +1449,22 @@
         <form id="messageForm" onsubmit="handleMessage(event)">
           <div class="fg">
             <label for="msgName">Your Full Name *</label>
-            <input type="text" id="msgName" placeholder="Enter your name" required>
+            <input type="text" id="msgName" name="msgName" placeholder="Enter your name" required>
           </div>
 
           <div class="fg">
             <label for="msgEmail">Email Address *</label>
-            <input type="email" id="msgEmail" placeholder="example@mail.com" required>
+            <input type="email" id="msgEmail" name="msgEmail" placeholder="example@mail.com" required>
           </div>
 
           <div class="fg">
             <label for="msgSubject">Subject *</label>
-            <input type="text" id="msgSubject" placeholder="Inquiry subject..." required>
+            <input type="text" id="msgSubject" name="msgSubject" placeholder="Inquiry subject..." required>
           </div>
 
           <div class="fg">
             <label for="msgBody">Your Message *</label>
-            <textarea id="msgBody" placeholder="Type your message details..." required></textarea>
+            <textarea id="msgBody" name="msgBody" placeholder="Type your message details..." required></textarea>
           </div>
 
           <button type="submit" class="form-btn">
@@ -1539,7 +1539,7 @@
         <h4>Stay Updated</h4>
         <p style="font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.6;">Subscribe to our monthly newsletter digest to receive academic highlights and calendar updates.</p>
         <form class="nl-form" onsubmit="handleNewsletter(event)">
-          <input type="email" class="nl-inp" placeholder="Your Email Address" required>
+          <input type="email" name="email" class="nl-inp" placeholder="Your Email Address" required>
           <button type="submit" class="nl-btn"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
         </form>
         <div class="ft-chips">
@@ -1778,34 +1778,74 @@
   // Form Submissions Actions
   function handleInquiry(event) {
     event.preventDefault();
-    const btn = event.target.querySelector('.form-btn');
+    const form = event.target;
+    const btn = form.querySelector('.form-btn');
     btn.innerHTML = '<i data-lucide="loader-2" style="width:16px;height:16px;animation:pulse 1s linear infinite"></i> Processing...';
     lucide.createIcons();
 
-    setTimeout(() => {
-      event.target.reset();
+    fetch('api/inquiry.php', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success) {
+        form.reset();
+        openPopup('Application Inquiry Sent!', 'Thank you for your inquiry. Our admissions helpdesk has registered your student and will call you in 24-48 business hours.', 'mail-check');
+      } else {
+        alert(data.message || 'Error occurred');
+      }
+    })
+    .catch(() => alert('Network error'))
+    .finally(() => {
       btn.innerText = 'Submit Application Inquiry';
-      openPopup('Application Inquiry Sent!', 'Thank you for your inquiry. Our admissions helpdesk has registered your student and will call you in 24-48 business hours.', 'mail-check');
-    }, 1200);
+    });
   }
 
   function handleMessage(event) {
     event.preventDefault();
-    const btn = event.target.querySelector('.form-btn');
+    const form = event.target;
+    const btn = form.querySelector('.form-btn');
     btn.innerText = 'Sending Message...';
 
-    setTimeout(() => {
-      event.target.reset();
+    fetch('api/contact.php', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success) {
+        form.reset();
+        openPopup('Message Sent Successfully!', 'Our administrative desk has received your notes and will reply via email shortly.', 'send');
+      } else {
+        alert(data.message || 'Error occurred');
+      }
+    })
+    .catch(() => alert('Network error'))
+    .finally(() => {
       btn.innerText = 'Send Message Securely';
-      openPopup('Message Sent Successfully!', 'Our administrative desk has received your notes and will reply via email shortly.', 'send');
-    }, 1200);
+    });
   }
 
   function handleNewsletter(event) {
     event.preventDefault();
-    const email = event.target.querySelector('.nl-inp').value;
-    event.target.reset();
-    openPopup('Subscribed Successfully!', `Email address "${email}" has been added to our circular mailing distribution list.`, 'sparkles');
+    const form = event.target;
+    const email = form.querySelector('.nl-inp').value;
+    
+    fetch('api/newsletter.php', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success) {
+        form.reset();
+        openPopup('Subscribed Successfully!', `Email address "${email}" has been added to our circular mailing distribution list.`, 'sparkles');
+      } else {
+        alert(data.message || 'Error occurred');
+      }
+    })
+    .catch(() => alert('Network error'));
   }
 
   // Call-To-Action Simulation Triggers
